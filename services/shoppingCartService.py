@@ -43,7 +43,7 @@ def update_item_quantity(customer_id, product_id, quantity):
                 session.commit()
                 session.refresh(shopping_cart) 
 
-def fetch_shopping_cart(customer_id):
+def get_shopping_cart(customer_id):
     with Session(db.engine) as session:
         shopping_cart = session.query(ShoppingCart).filter_by(customer_id=customer_id).first()
         if shopping_cart:

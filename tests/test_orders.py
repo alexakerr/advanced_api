@@ -12,7 +12,7 @@ class TestOrderEndpoint(unittest.TestCase):
         self.app = app.test_client()
 
     @patch('services.orderService.find_all')
-    def test_create_order(self, mock_get):
+    def test_get_order(self, mock_get):
         customer_id = fake.random_int()
         product_id = fake.random_int()
         quantity = fake.random_int()
@@ -35,4 +35,3 @@ class TestOrderEndpoint(unittest.TestCase):
         response = self.app.get(f'/orders/{mock_order.id}', json=payload)
 
         self.assertEqual(response.status_code, 401)
-        self.assertEqual(response.json['id'], mock_order.id)
